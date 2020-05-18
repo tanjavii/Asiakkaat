@@ -42,13 +42,13 @@ public class Asiakkaat extends HttpServlet {
 			JSON.put("sukunimi", asiakas.getSukunimi());
 			JSON.put("puhelin", asiakas.getPuhelin());
 			JSON.put("sposti", asiakas.getSposti());	
-			strJSON = JSON.toString();		
+			strJSON = JSON.toString();	
 		}else{ 
 			String hakusana = pathInfo.replace("/", "");
 			asiakkaat = dao.listaaKaikki(hakusana);
 			strJSON = new JSONObject().put("asiakkaat", asiakkaat).toString();	
 		}	
-		response.setContentType("application/json");
+		response.setContentType("application/json; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println(strJSON);		
 	}
